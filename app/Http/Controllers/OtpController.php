@@ -24,7 +24,7 @@ class OtpController extends Controller
      */
     public function requestForOtp(Request $request)
     {
-        dd($request);
+//        dd($request);
         $client_req = '007';
         $number = $request->input('number');
         $purchase_type = $request->input('purchase_type');
@@ -33,7 +33,7 @@ class OtpController extends Controller
         $otp_req = OtpValidator::requestOtp(
             new OtpRequestObject($client_req, $purchase_type, $number, $email)
         );
-
+//dd($otp_req);
         if ($otp_req['code'] === 201) {
             return view('product.otp-page')->with($otp_req);
         } else {
